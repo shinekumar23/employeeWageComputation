@@ -32,6 +32,7 @@ do
         dailyWages[$totalWorkingDays]=$(($empHrs*$EMP_RATE_PER_HR))
 done
 totalSalary="$( getEmpWage $totalEmpHr )"
+echo "The day wise wages are ${dailyWages[@]}"
 
 
 
