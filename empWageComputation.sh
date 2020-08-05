@@ -8,6 +8,7 @@ MAX_HRS_IN_MONTH=100
 totalEmpHr=0
 totalWorkingDays=0
 
+declare -A dailyWages
 function getWorkHrs() {
         case $1 in
                 $IS_FULL_TIME)
@@ -29,10 +30,11 @@ do
         ((totalWorkingDays++))
         getWorkHrs $((RANDOM%3))
         totalEmpHr=$(($totalEmpHr+$empHrs))
-        dailyWages[$totalWorkingDays]=$(($empHrs*$EMP_RATE_PER_HR))
+        dailyWages["Day "$totalWorkingDays]="$(($empHrs*$EMP_RATE_PER_HR))"
 done
 totalSalary="$( getEmpWage $totalEmpHr )"
-echo "The day wise wages are ${dailyWages[@]}"
+echo "Days are ${!dailyWages[@]}"
+echo "DayWise salaries are ${dailyWages[@]}"
 
 
 
