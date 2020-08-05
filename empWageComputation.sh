@@ -1,13 +1,15 @@
 #!/bin/bash -x
+IS_PART_TIME=1
+IS_FULL_TIME=2
 EMP_RATE_PER_HR=20
-Attendence=$((RANDOM%2))
+Attendence=$((RANDOM%3))
 case $Attendence in
-					0) echo "Employee is present"
-						EmpHrs=8
-						;;
-					1) echo "Employee is absent"
-						EmpHrs=0
-						;;
+						$IS_PART_TIME) EmpHrs=4
+										   ;;
+						$IS_FULL_TIME) EmpHrs=8
+							            ;;
+					      	      *) EmpHrs=0
+										   ;; 
 esac
 dailyWage=$(($EMP_RATE_PER_HR*$EmpHrs))
 echo "Daily wage of employee is $dailyWage"
